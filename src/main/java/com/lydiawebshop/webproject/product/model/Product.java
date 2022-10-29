@@ -5,7 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
@@ -16,8 +18,10 @@ import javax.persistence.Id;
 public class Product {
 
     @Id
+    @GeneratedValue
     private long id;
 
+    @Column(unique = true)
     private String name;
     private Long prize;
     private String description;
