@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+
+  frontend:
+    image: 'lydia-webshop-frontend'
+    build:
+      context: 'lydia-webshop-frontend'
+      dockerfile: 'Dockerfile'
+    ports:
+      - '3000:3000'
+
+  mysqldb:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DATABASE_ROOT_PASSWORD:-1234}
+      - MYSQL_DATABASE=${DATABASE_NAME:-lydia_webshop}
+      - MYSQL_USER=${DATABASE_USERNAME:-sa}
+      - MYSQL_PASSWORD=${DATABASE_PASSWORD:-1234}
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
+
+  backend:
+    image: 'lydia-webshop-backend'
+    build: '.'
+    ports:
+      - '8080:8080'
+    environment:
+      - spring.datasource.url=${DATABASE_URL:-jdbc:mysql://localhost:3306/lydia_webshop}
+      - spring.datasource.username=${DATABASE_USERNAME:-sa}
+      - spring.datasource.password=${DATABASE_PASSWORD:-1234}
+      - spring.jpa.hibernate.ddl-auto=create
+    depends_on:
+      mysqldb:
+        condition: service_healthy
