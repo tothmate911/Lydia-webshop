@@ -2,6 +2,14 @@ version: '3'
 
 services:
 
+  frontend:
+    image: 'lydia-webshop-frontend'
+    build:
+      context: 'lydia-webshop-frontend'
+      dockerfile: 'Dockerfile'
+    ports:
+      - '3000:3000'
+
   mysqldb:
     image: mysql:latest
     environment:
@@ -15,7 +23,7 @@ services:
       retries: 10
 
   backend:
-    image: 'backend'
+    image: 'lydia-webshop-backend'
     build: '.'
     ports:
       - '8080:8080'
