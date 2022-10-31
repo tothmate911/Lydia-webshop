@@ -1,9 +1,15 @@
 import React from 'react';
+import Products from './components/products/Products';
+import axios from 'axios';
 
-function App() {
+const backendUrl = "http://localhost:8080";
+axios.defaults.baseURL = backendUrl;
+
+const App = () => {
   return (
-    <div className="App">
+    <div>
       Lydia-webshop
+      <Products />
     </div>
   );
 }
