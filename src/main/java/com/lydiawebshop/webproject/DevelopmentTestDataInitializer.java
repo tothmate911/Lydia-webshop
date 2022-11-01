@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile("!test")
+@Profile("development")
 public class DevelopmentTestDataInitializer implements ApplicationRunner {
 
     @Autowired
@@ -23,4 +23,5 @@ public class DevelopmentTestDataInitializer implements ApplicationRunner {
                 .build();
         productService.saveProduct(product1);
     }
+
 }
