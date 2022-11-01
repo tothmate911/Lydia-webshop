@@ -9,3 +9,6 @@ spring:
     hibernate:
       ddl-auto: create-drop
       dialect: org.hibernate.dialect.MySQL8Dialect
+
+frontend:
+  url: ${FRONTEND_URL:http://localhost:3000}

@@ -32,6 +32,7 @@ services:
       - spring.datasource.username=${DATABASE_USERNAME:-sa}
       - spring.datasource.password=${DATABASE_PASSWORD:-1234}
       - spring.jpa.hibernate.ddl-auto=create
+      - frontend.url=${FRONTEND_URL:-http://localhost:3000}
     depends_on:
       mysqldb:
         condition: service_healthy
