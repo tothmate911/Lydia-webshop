@@ -17,11 +17,29 @@ public class DevelopmentTestDataInitializer implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        Product product1 = Product.builder()
-                .name("Product1")
-                .prize(10000L)
+        Product towel = Product.builder()
+                .name("Towel")
+                .prize(1000L)
+                .description("Blue, small towel")
+                .mainImagePath("/images/products/development_test_data/Towel.jpg")
                 .build();
-        productService.saveProduct(product1);
+        productService.saveProduct(towel);
+
+        Product lego = Product.builder()
+                .name("Lego")
+                .prize(7990L)
+                .description("Lego Technique car")
+                .mainImagePath("/images/products/development_test_data/Lego.png")
+                .build();
+        productService.saveProduct(lego);
+
+        Product book = Product.builder()
+                .name("Book")
+                .prize(5000L)
+                .description("Stephen Meyer: Signature in the Cell")
+                .mainImagePath("/images/products/development_test_data/Book.png")
+                .build();
+        productService.saveProduct(book);
     }
 
 }

@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { Product } from './Product'
 import ProductCard from './ProductCard';
 
+import CardGroup from 'react-bootstrap/CardGroup';
+
 const Products = () => {
 
     const [products, setProducts] = useState<Product[]>([]);
@@ -19,9 +21,13 @@ const Products = () => {
     }, []);
 
     return (
-        <div>{products.map(product => (
-            <ProductCard key={product.id} product={product} />
-        ))}</div>
+        <div className="productCardsContainer">
+             <CardGroup>
+            {products.map(product => (
+                <ProductCard key={product.id} product={product} />
+            ))}
+            </CardGroup>
+        </div>
     )
 }
 
