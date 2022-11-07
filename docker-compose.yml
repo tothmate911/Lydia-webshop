@@ -2,7 +2,7 @@ version: '3'
 
 services:
 
-  frontend:
+  lydia-webshop-frontend:
     image: 'lydia-webshop-frontend'
     build:
       context: 'lydia-webshop-frontend'
@@ -10,7 +10,7 @@ services:
     ports:
       - '3000:3000'
 
-  mysqldb:
+  lydia-webshop-mysqldb:
     image: mysql:latest
     environment:
       - MYSQL_ROOT_PASSWORD=${DATABASE_ROOT_PASSWORD:-1234}
@@ -22,7 +22,7 @@ services:
       timeout: 20s
       retries: 10
 
-  backend:
+  lydia-webshop-backend:
     image: 'lydia-webshop-backend'
     build: '.'
     ports:
@@ -34,5 +34,5 @@ services:
       - spring.jpa.hibernate.ddl-auto=create
       - frontend.url=${FRONTEND_URL:-http://localhost:3000}
     depends_on:
-      mysqldb:
+      lydia-webshop-mysqldb:
         condition: service_healthy
