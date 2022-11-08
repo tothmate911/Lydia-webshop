@@ -1,6 +1,8 @@
 package com.lydiawebshop.webproject.product.service;
 
 import com.lydiawebshop.webproject.product.model.Product;
+import com.lydiawebshop.webproject.product.respository.ProductRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +20,14 @@ class ProductServiceImplTest {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    @BeforeEach
+    public void initEach() {
+        productRepository.deleteAll();
+    }
 
     @Test
     public void saveProduct_productSavedInDatabase() {

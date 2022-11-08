@@ -26,4 +26,6 @@ public class Product {
     private Long prize;
     private String description;
 
+    private String mainImagePath;
+
 }
