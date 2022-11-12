@@ -32,14 +32,6 @@ public class DevelopmentTestDataInitializer implements ApplicationRunner {
                     .mainImagePath("/images/products/development_test_data/Towel.jpg")
                     .build();
             productService.saveProduct(towel);
-            Product towel2 = Product.builder()
-                    .name("Towel")
-                    .prize(1000L)
-                    .description("Blue, small towel")
-                    .mainImagePath("/images/products/development_test_data/Towel.jpg")
-                    .build();
-            productService.saveProduct(towel2);
-
             Product lego = Product.builder()
                     .name("Lego")
                     .prize(7990L)
