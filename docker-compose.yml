@@ -24,7 +24,7 @@ services:
       - spring.datasource.username=${DATABASE_USERNAME:-sa}
       - spring.datasource.password=${DATABASE_PASSWORD:-1234}
       - spring.jpa.hibernate.ddl-auto=create
-      - frontend.url=http://localhost:3000
+      - frontend.url=http://localhost
     depends_on:
       lydia-webshop-mysqldb:
         condition: service_healthy
