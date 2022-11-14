@@ -11,6 +11,7 @@ processes = []
   SPRING_DATASOURCE_DRIVERCLASSNAME = "org.postgresql.Driver"
   SPRING_JPA_HIBERNATE_DIALECT = "org.hibernate.dialect.PostgreSQLDialect"
   SPRING_JPA_HIBERNATE_DDL_AUTO = "update"
+  FRONTEND_URL = "https://lydia-webshop.fly.dev"
 
 [experimental]
   allowed_public_ports = []
