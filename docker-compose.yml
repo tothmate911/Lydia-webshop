@@ -20,11 +20,11 @@ services:
     ports:
       - '8080:8080'
     environment:
-      - spring.datasource.url=${DATABASE_URL:-jdbc:mysql://lydia-webshop-mysqldb:3306/lydia_webshop}
+      - spring.datasource.url=jdbc:mysql://lydia-webshop-mysqldb:3306/lydia_webshop
       - spring.datasource.username=${DATABASE_USERNAME:-sa}
       - spring.datasource.password=${DATABASE_PASSWORD:-1234}
       - spring.jpa.hibernate.ddl-auto=create
-      - frontend.url=${FRONTEND_URL:-http://localhost:3000}
+      - frontend.url=http://localhost:3000
     depends_on:
       lydia-webshop-mysqldb:
         condition: service_healthy
@@ -35,4 +35,7 @@ services:
       context: 'lydia-webshop-frontend'
       dockerfile: 'Dockerfile'
     ports:
-      - '3000:3000'
+      - '3000:80'
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:8080
+      

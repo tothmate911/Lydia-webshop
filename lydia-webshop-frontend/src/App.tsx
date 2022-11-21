@@ -1,11 +1,9 @@
-import React from 'react';
 import Products from './components/products/Products';
 import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const backendUrl = "http://localhost:8080";
-axios.defaults.baseURL = backendUrl;
+axios.defaults.baseURL = window._env_.REACT_APP_BACKEND_URL;
 
 const App = () => {
   return (
