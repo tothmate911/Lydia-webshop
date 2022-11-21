@@ -20,6 +20,7 @@
     "web-vitals": "^3.0.4"
   },
   "scripts": {
+    "prestart": "chmod +x ./env.sh && ./env.sh && mv env-config.js ./public/env-config.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -24,7 +24,7 @@ services:
       - spring.datasource.username=${DATABASE_USERNAME:-sa}
       - spring.datasource.password=${DATABASE_PASSWORD:-1234}
       - spring.jpa.hibernate.ddl-auto=create
-      - frontend.url=http://localhost
+      - frontend.url=http://localhost:3000
     depends_on:
       lydia-webshop-mysqldb:
         condition: service_healthy
@@ -35,7 +35,7 @@ services:
       context: 'lydia-webshop-frontend'
       dockerfile: 'Dockerfile'
     ports:
-      - '80:80'
-#     Port 80 is used with nginx docker base image
-#     If you want to use the node alpine base image, then use port 3000 like this:
-#      - '3000:3000'
+      - '3000:80'
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:8080
+      
