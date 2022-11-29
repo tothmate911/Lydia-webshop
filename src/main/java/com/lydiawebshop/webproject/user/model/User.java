@@ -18,15 +18,16 @@ import java.util.Map;
 public class User {
 
     @Id
+    @GeneratedValue
     private long id;
 
     private String firstName;
     private String lastName;
     private String email;
 
-//    @ElementCollection
-//    @MapKeyJoinColumn(name = "productId")
-//    @Column(name = "quantity")
-//    private Map<Product, Integer> cart;
+    @ElementCollection
+    @MapKeyJoinColumn(name = "productId")
+    @Column(name = "quantity")
+    private Map<Product, Integer> cart;
 
 }
